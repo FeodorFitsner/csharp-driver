@@ -6,27 +6,13 @@ cache:
   - C:\ProgramData\chocolatey\lib -> .\build\appveyor_install.ps1
   - C:\Users\appveyor\.ccm\repository -> .\build\appveyor_install.ps1
   - C:\Users\appveyor\deps -> .\build\appveyor_install.ps1
-image: Visual Studio 2017
+image: test-vs2017-gce
 environment:
   appveyor_build_worker_cloud: gce
   NUNIT_PATH: nunit3-console
   matrix:
     - TARGET: net452
-      CI_TYPE: UNIT
-      PROJECT: Cassandra.Tests
-    - TARGET: netcoreapp1.0
-      CI_TYPE: UNIT
-      PROJECT: Cassandra.Tests
-    - TARGET: net452
       CASSANDRA_VERSION: 3.10
-      CI_TYPE: INTEGRATION
-      PROJECT: Cassandra.IntegrationTests
-    - TARGET: netcoreapp1.0
-      CASSANDRA_VERSION: 3.10
-      CI_TYPE: INTEGRATION
-      PROJECT: Cassandra.IntegrationTests
-    - TARGET: net452
-      CASSANDRA_VERSION: 2.2.7
       CI_TYPE: INTEGRATION
       PROJECT: Cassandra.IntegrationTests
 
